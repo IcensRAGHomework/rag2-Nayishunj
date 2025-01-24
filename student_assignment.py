@@ -20,7 +20,7 @@ def hw02_2(q2_pdf):
     loader = PyPDFLoader(q2_pdf)
     documents = loader.load()
     pdf_text = "\n".join([doc.page_content for doc in documents])
-    separators=[ "第 [一二三四五六七八九十]+ 章", "第 \d+ 條"]
+    separators=[ "\s+第 [一二三四五六七八九十]+ 章\s+", "\s+第 \d+-\d+ 條\s+", "\s+第 \d+ 條\s+"]
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1,
                                                    chunk_overlap=0,
                                                    keep_separator = True,
